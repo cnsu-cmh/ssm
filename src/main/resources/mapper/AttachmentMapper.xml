@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.AttachmentMapper">
+  <resultMap id="BaseResultMap" type="com.xiaoshu.entity.Attachment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="attachmentId" jdbcType="INTEGER" property="attachmentid" />
+    <result column="attachmentName" jdbcType="VARCHAR" property="attachmentname" />
+    <result column="attachmentPath" jdbcType="VARCHAR" property="attachmentpath" />
+    <result column="attachmentTime" jdbcType="TIMESTAMP" property="attachmenttime" />
+  </resultMap>
+</mapper>

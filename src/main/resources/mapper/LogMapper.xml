@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.LogMapper">
+  <resultMap id="BaseResultMap" type="com.xiaoshu.entity.Log">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="logId" jdbcType="BIGINT" property="logid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="operation" jdbcType="VARCHAR" property="operation" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="module" jdbcType="VARCHAR" property="module" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  
+  
+  <update id="truncateTable">
+  	truncate table log
+  </update>
+</mapper>

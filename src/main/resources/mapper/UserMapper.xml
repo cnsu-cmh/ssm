@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.UserMapper">
+  
+  
+  <resultMap id="BaseResultMap" type="com.xiaoshu.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="userType" jdbcType="TINYINT" property="usertype" />
+    <result column="roleId" jdbcType="INTEGER" property="roleid" />
+    <result column="userDescription" jdbcType="VARCHAR" property="userdescription" />
+  </resultMap>
+  
+  
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+    	1 = 1 
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="and (" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and u.${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and u.${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and u.${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and u.${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  
+  
+  <select id="selectUserAndRoleByExample" parameterType="com.xiaoshu.entity.UserExample" resultMap="UserResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+	<include refid="User_Column_List" />
+	 from user u,role r 
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="_parameter == null">
+      where 1 = 1
+    </if>
+    and u.roleid = r.roleid
+    <if test="orderByClause != null">
+      order by u.${orderByClause}
+    </if>
+  </select>
+  
+  	
+  <sql id="User_Column_List">
+    u.userId, u.userName, u.password, u.userType, u.roleId, u.userDescription, r.rolename
+  </sql>
+  
+   <resultMap id="UserResultMap" type="com.xiaoshu.entity.User">
+    <id column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="userType" jdbcType="TINYINT" property="usertype" />
+    <result column="roleId" jdbcType="INTEGER" property="roleid" />
+    <result column="userDescription" jdbcType="VARCHAR" property="userdescription" />
+    <association javaType="com.xiaoshu.entity.Role" property="role">
+		<id column="roleId" property="roleid" />
+		<result column="roleName" property="rolename" />
+	</association>
+  </resultMap>
+  
+</mapper>

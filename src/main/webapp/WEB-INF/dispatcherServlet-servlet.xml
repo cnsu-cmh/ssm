@@ -15,7 +15,7 @@
 	<!--SpringMVC的配置文件，包含网站跳转逻辑的控制，配置 -->
 	<context:component-scan base-package="com.xiaoshu"
 		use-default-filters="false">
-		<!--只扫描控制器Controller 与 Component -->
+		<!--只扫描控制器Controller-->
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>

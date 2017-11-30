@@ -236,6 +236,11 @@
 							if (!id || id == null) {
 								$("#alertmod_table_menu_mod").show();
 							}else{
+								var rowData =$("#table_menu").jqGrid('getRowData',id);
+								if(rowData.state=="isParent" || rowData.state=="close"){
+									layer.alert("该菜单不提供按钮,请选择其他菜单,谢谢！",{icon: 5});
+									return;
+								}
 								parent.layer.open({
 								    type: 2,
 								    title:'按钮管理',

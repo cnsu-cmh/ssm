@@ -19,6 +19,22 @@
 	}
 
 </script>
+<%
+boolean auto = false;
+Cookie[] cookies = request.getCookies();
+if(cookies != null){
+	for(int i=0; i<cookies.length; i++) {
+   		Cookie cookie = cookies[i];
+   		if("autoLogin".equals(cookie.getName())){
+   			auto = true;
+   			break;
+   		}
+	}
+}
+if(auto){
+	response.sendRedirect("auto.htm");
+}
+%>
 </head>
 
 <body class="signin">

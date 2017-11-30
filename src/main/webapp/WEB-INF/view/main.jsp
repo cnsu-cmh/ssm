@@ -99,26 +99,27 @@
 						<div class="logo-element">H+</div>
 					</li>
 					<c:forEach items="${menuTree.children }" var="menu">
-						<li><a href="${menu.attributes.menuUrl }?menuid=${menu.id}"> <i
-								class="${menu.iconCls }"></i> <span class="nav-label">${menu.text }</span>
-								<span class="fa arrow"></span>
+						<li><a href="${menu.attributes.menuUrl }?menuid=${menu.id}">
+						 <i class="${menu.iconCls }"></i> <span class="nav-label">${menu.text }</span>
+								<c:if test="${menu.state eq 'isParent'}"><span class="fa arrow"></span></c:if> 
 							</a> 
 							<c:if test="${fn:length(menu.children) gt 0 }">
 								<ul class="nav nav-second-level">
 									<c:forEach items="${menu.children }" var="menu_c">
-										<li><a class="J_menuItem"
-											href="${menu_c.attributes.menuUrl }?menuid=${menu_c.id}">
-											<i class="${menu_c.iconCls }"></i>${menu_c.text }</a></li>
+										<li><a class="J_menuItem" href="${menu_c.attributes.menuUrl }?menuid=${menu_c.id}">
+											<i class="${menu_c.iconCls }"></i><span class="nav-label">${menu_c.text }</span>
+											<c:if test="${menu_c.state eq 'isParent'}"><span class="fa arrow"></span></c:if>
+											</a>
 										<c:if test="${fn:length(menu_c.children) gt 0 }">
-											<ul class="nav nav-second-level">
+											<ul class="nav nav-third-level">
 												<c:forEach items="${menu_c.children}" var="menu_c_c">
-													<li><a class="J_menuItem"
-														href="${menu_c_c.attributes.menuUrl }?menuid=${menu_c_c.id}">
-														<i class="${menu_c_c.iconCls }"></i>${menu_c_c.text }</a>
+													<li><a class="J_menuItem" href="${menu_c_c.attributes.menuUrl }?menuid=${menu_c_c.id}">
+														<i class="${menu_c_c.iconCls }"></i><span class="nav-label">${menu_c_c.text }</span></a>
 													</li>
 												</c:forEach>
 											</ul>
 										</c:if>
+										</li>
 									</c:forEach>
 								</ul>
 							</c:if>

@@ -210,7 +210,7 @@ public class RoleController {
 			jsonObject.put("menuurl", m.getMenuurl());
 			jsonObject.put("menudescription", m.getMenudescription());
 			jsonObject.put("level", l);
-			jsonObject.put("isLeaf", StringUtil.isEmpty(m.getState()));
+			jsonObject.put("isLeaf", (StringUtil.isEmpty(m.getState())||"close".equals(m.getState()) ));
 			jsonObject.put("parent", m.getParentid().compareTo(new Integer(0))>0?m.getParentid():null);
 			jsonObject.put("laoded", true);
 			jsonObject.put("expanded", true);

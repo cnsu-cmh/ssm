@@ -200,11 +200,7 @@ public class LoginController {
 			jsonObject.put("iconCls", menu.getIconcls());
 			JSONObject attributeObject = new JSONObject();
 			attributeObject.put("menuUrl", menu.getMenuurl());
-			if(!hasChildren(menu.getMenuid(), menuIds)){
-				jsonObject.put("state", "");
-			}else{
-				jsonObject.put("state", menu.getState());				
-			}
+			jsonObject.put("state", menu.getState());				
 			jsonObject.put("attributes", attributeObject);
 			jsonArray.add(jsonObject);
 		}
@@ -300,9 +296,6 @@ public class LoginController {
 							response.sendRedirect("main.htm");
 							return;
 					  }
-           		} else {
-           			request.getRequestDispatcher("login.jsp").forward(request, response);
-           			return;
            		}
         	}
     	}

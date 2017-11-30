@@ -99,7 +99,7 @@ public class MenuController {
 			jsonObject.put("menuurl", m.getMenuurl());
 			jsonObject.put("menudescription", m.getMenudescription());
 			jsonObject.put("level", l);
-			jsonObject.put("isLeaf", StringUtil.isEmpty(m.getState()));
+			jsonObject.put("isLeaf", (StringUtil.isEmpty(m.getState())||"close".equals(m.getState()) ));
 			jsonObject.put("parent", m.getParentid().compareTo(new Integer(0))>0?m.getParentid():null);
 			jsonObject.put("laoded", true);
 			jsonObject.put("expanded", true);
@@ -137,6 +137,9 @@ public class MenuController {
 				menu.setParentid(Integer.parseInt(parentId));
 				if (isLeaf(parentId)) {
 					// 添加操作
+					if("1".equals(parentId)){
+						menu.setState("close");
+					}
 					menuService.addMenu(menu);  
 					
 					// 更新他上级状态。变成isParent
@@ -145,6 +148,10 @@ public class MenuController {
 					menu.setState("isParent");
 					menuService.updateMenu(menu);
 				} else {
+					// 添加操作
+					if("1".equals(parentId)){
+						menu.setState("close");
+					}
 					menuService.addMenu(menu);
 				}
 			}
@@ -190,10 +197,15 @@ public class MenuController {
 				menu.setParentid(Integer.parseInt(parentId));
 				long sonNum = menuService.countMenu(menu);
 				if (sonNum == 1) {  
-					// 只有一个孩子，删除该孩子，且把父亲状态置为open
+					// 只有一个孩子，删除该孩子，且把父亲状态置为""或close
 					menu = new Menu();
 					menu.setMenuid(Integer.parseInt(parentId));
-					menu.setState("");
+					Menu parentMenu = menuService.findMenuByMenuid(Integer.parseInt(parentId));
+					if(parentMenu.getParentid().compareTo(1)==0){
+						menu.setState("close");
+					}else{
+						menu.setState("");
+					}
 					menuService.updateMenu(menu);
 					
 					menuService.deleteMenu(id);

@@ -76,8 +76,8 @@ CREATE TABLE `menu` (
 -- ----------------------------
 INSERT INTO `menu` VALUES ('1', 'SSM系统', '', '-1', '主菜单', 'isParent', 'fa fa-university', '1');
 INSERT INTO `menu` VALUES ('2', '系统管理', '', '1', '', 'isParent', 'fa fa-desktop', '1');
-INSERT INTO `menu` VALUES ('3', '修改密码', 'javascript:editPassword();//', '1', '', '', 'fa fa-key', '4');
-INSERT INTO `menu` VALUES ('4', '安全退出', 'logout.htm', '1', '', '', 'fa fa-user-times', '5');
+INSERT INTO `menu` VALUES ('3', '修改密码', 'javascript:editPassword();//', '1', '', 'close', 'fa fa-key', '4');
+INSERT INTO `menu` VALUES ('4', '安全退出', 'logout.htm', '1', '', 'close', 'fa fa-user-times', '5');
 INSERT INTO `menu` VALUES ('5', '菜单管理', 'menu/menuIndex.htm', '2', '', '', 'fa fa-sliders', '4');
 INSERT INTO `menu` VALUES ('6', '角色管理', 'role/roleIndex.htm', '2', '', '', 'fa fa-users', '3');
 INSERT INTO `menu` VALUES ('7', '用户管理', 'user/userIndex.htm', '2', '', '', 'fa fa-user', '2');

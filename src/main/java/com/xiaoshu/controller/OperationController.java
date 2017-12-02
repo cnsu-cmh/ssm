@@ -63,7 +63,6 @@ public class OperationController {
 		JSONObject result=new JSONObject();
 		try {
 			if (operationid != null) {  //更新操作
-				operation.setMenuid(operationid);
 				operationService.updateOperation(operation);
 			} else {
 				operationService.addOperation(operation);

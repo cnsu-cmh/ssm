@@ -273,6 +273,9 @@ public class LoginController {
 					  map.put("expireTime", new Date());
 					  Token token = tokenService.findOneToken(map);
 					  if (token == null) {
+						  cookie = new Cookie(cookies[i].getName(), null);
+						  cookie.setMaxAge(0);
+						  response.addCookie(cookie);
 						  request.getRequestDispatcher("login.jsp").forward(request, response);
 						  return;
 					  } else {

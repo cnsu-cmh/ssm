@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations = { "classpath:applicationContext.xml", "dispatcherServlet-servlet.xml" })
+@ContextConfiguration(locations = { "classpath:applicationContext.xml", "classpath:dispatcherServlet-servlet.xml" })
 public class TestMenuTree {
 
 	@Autowired

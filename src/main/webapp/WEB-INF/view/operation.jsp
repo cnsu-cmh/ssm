@@ -166,10 +166,10 @@
 	             		if(obj.errorMsg === undefined){
 	             			/* $("#table_menu_operation").trigger("reloadGrid"); */
 	             			$("#tokeInOutList").jqGrid('resetSelection');
-	               		return true;
+	               			return [true];
 	             		}else{
 	             			layer.alert(obj.errorMsg, {icon: 2});
-	             			return false;
+	             			return [false];
 	             		}
 				},
 				closeAfterEdit : true
@@ -186,10 +186,10 @@
 	             		if(obj.errorMsg === undefined){
 	             			$("#tokeInOutList").jqGrid('resetSelection');
 	             			/* $("#table_menu_operation").trigger("reloadGrid"); */
-	               		return true;
+	               			return [true];
 	             		}else{
 	             			layer.alert(obj.errorMsg, {icon: 2});
-	             			return false;
+	             			return [false];
 	             		}
 				},
 				closeAfterAdd : true
@@ -201,12 +201,12 @@
 	             		if(obj.errorMsg){
 	             			layer.alert(obj.errorMsg, {icon: 2});
 	             			$("#delmodtable_menu_operation").hide();
-	             			return false;
+	             			return [false];
 	             		}else{
 	             			/* $("#table_menu_operation").trigger("reloadGrid"); */
 	             			$("#tokeInOutList").jqGrid('resetSelection');
-						$("#delmodtable_menu_operation").hide();
-	               		return true;
+							$("#delmodtable_menu_operation").hide();
+	               			return [true];
 	             		}
 					}
 	             },
